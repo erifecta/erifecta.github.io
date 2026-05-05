@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERIFECTA • Second Hand som slår nytt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Playfair+Display:wght@700&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; }
+        .heading { font-family: 'Playfair Display', sans-serif; }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('https://source.unsplash.com/2000x1200/?fashion,model,streetwear');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .product-card:hover {
+            transform: translateY(-20px) scale(1.03);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+        }
+
+        .animate-text {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .typing {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #4ade80;
+            animation: typing 3.5s steps(30, end) forwards, blink 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: #4ade80 }
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white">
+
+    <!-- HERO -->
+    <section class="hero-bg h-screen flex items-center justify-center relative">
+        <div class="text-center z-10 px-6 max-w-4xl">
+            <h1 class="text-7xl md:text-8xl heading font-black tracking-tighter mb-4 animate-text">
+                ERIFECTA
+            </h1>
+            <p class="text-4xl md:text-5xl font-light mb-6 typing inline-block">Begagnat som känns nytt</p>
+            <p class="text-xl md:text-2xl text-gray-300 mb-10">Trendigaste second hand-kläderna • Miljön tackar • Plånboken jublar</p>
+            
+            <div class="flex gap-6 justify-center">
+                <a href="#shop" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})" 
+                   class="bg-emerald-500 hover:bg-emerald-600 text-black font-bold text-xl px-12 py-6 rounded-2xl transition-all hover:scale-105">
+                    SHOPPA NU
+                </a>
+                <a href="#omoss" class="border-2 border-white hover:bg-white hover:text-black font-bold text-xl px-10 py-6 rounded-2xl transition-all">
+                    VÅR STORY
+                </a>
+            </div>
+            
+            <p class="mt-12 text-emerald-400 text-lg flex items-center justify-center gap-3">
+                <i class="fas fa-check"></i> 100% kontrollerade plagg • <i class="fas fa-check"></i> Leverans eller hämtning
+            </p>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-4xl"></i>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="bg-black py-8 border-b border-emerald-900">
+        <div class="max-w-6xl mx-auto grid grid-cols-3 text-center">
+            <div><p class="text-4xl font-bold text-emerald-400">400+</p><p class="text-gray-400">Plagg sålda</p></div>
+            <div><p class="text-4xl font-bold text-emerald-400">87%</p><p class="text-gray-400">Återkommande kunder</p></div>
+            <div><p class="text-4xl font-bold text-emerald-400">1.2 ton</p><p class="text-gray-400">CO₂ sparat</p></div>
+        </div>
+    </div>
+
+    <!-- SHOP SECTION -->
+    <section id="shop" class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="flex justify-between items-end mb-12">
+            <h2 class="text-5xl heading font-bold">Nya plagg varje vecka</h2>
+            <input type="text" id="search" placeholder="Sök plagg..." 
+                   class="bg-zinc-900 border border-zinc-700 rounded-full px-6 py-3 w-80 focus:outline-none focus:border-emerald-500">
+        </div>
+
+        <div id="products" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <!-- Produkter läggs till via JS nedan -->
+        </div>
+    </section>
+
+    <!-- SUSTAINABILITY -->
+    <section class="bg-emerald-950 py-20">
+        <div class="max-w-4xl mx-auto text-center px-6">
+            <h2 class="text-5xl heading font-bold mb-8">Second hand är den nya lyxen</h2>
+            <p class="text-2xl text-emerald-300">Varje plagg du köper hos oss sparar vatten, energi och minskar textilavfall. Du ser bra ut – jorden mår bra.</p>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-20 px-6 bg-black">
+        <h2 class="text-center text-5xl heading font-bold mb-12">Vad kunderna säger</h2>
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+            <div class="bg-zinc-900 p-8 rounded-3xl">
+                <p class="italic">"Hittade en helt ny Supreme hoodie för 250 kr. Bättre än nya!"</p>
+                <p class="mt-6 font-bold">- Lucas, 19</p>
+            </div>
+            <div class="bg-zinc-900 p-8 rounded-3xl">
+                <p class="italic">"Äntligen kan jag köpa märkeskläder utan att känna mig skyldig."</p>
+                <p class="mt-6 font-bold">- Ella, 17</p>
+            </div>
+            <div class="bg-zinc-900 p-8 rounded-3xl">
+                <p class="italic">"Bästa köpet i år. Plaggen kom fräscha och snyggt packade!"</p>
+                <p class="mt-6 font-bold">- Nora, 22</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black border-t border-zinc-800 py-16 text-center">
+        <div class="max-w-6xl mx-auto px-6">
+            <p class="text-4xl heading font-bold mb-4">ERIFECTA UF</p>
+            <p class="text-gray-400 mb-8">Ungt. Hållbart. Sjukt snyggt.</p>
+            <p class="text-emerald-400">Instagram: @erifecta.uf</p>
+            <p class="mt-12 text-xs text-gray-500">© 2026 ERIFECTA UF • Ett Ung Företagande-företag</p>
+        </div>
+    </footer>
+
+    <script>
+        const products = [
+            { name: "Nike Tech Fleece", price: 449, img: "https://source.unsplash.com/600x600/?nike,hoodie" },
+            { name: "Adidas Samba", price: 299, img: "https://source.unsplash.com/600x600/?adidas,samba" },
+            { name: "Levi's 501 Jeans", price: 249, img: "https://source.unsplash.com/600x600/?levis,jeans" },
+            { name: "The North Face Jacka", price: 549, img: "https://source.unsplash.com/600x600/?northface,jacket" },
+            { name: "Supreme Box Logo", price: 399, img: "https://source.unsplash.com/600x600/?supreme,hoodie" },
+            { name: "Vintage Carhartt", price: 329, img: "https://source.unsplash.com/600x600/?carhartt" },
+        ];
+
+        function renderProducts(filteredProducts) {
+            const container = document.getElementById('products');
+            container.innerHTML = '';
+            
+            filteredProducts.forEach(p => {
+                const div = document.createElement('div');
+                div.className = "product-card bg-zinc-900 rounded-3xl overflow-hidden group cursor-pointer";
+                div.innerHTML = `
+                    <div class="relative">
+                        <img src="${p.img}" class="w-full h-80 object-cover transition-all group-hover:scale-110" alt="${p.name}">
+                        <div class="absolute top-4 right-4 bg-black/70 px-4 py-1 rounded-full text-sm font-bold">NY</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-1">${p.name}</h3>
+                        <p class="text-emerald-400 text-2xl font-bold">${p.price} kr</p>
+                        <button onclick="alert('Lägger till ${p.name} i varukorg! (Demo)')" 
+                                class="mt-6 w-full bg-white text-black py-4 rounded-2xl font-bold hover:bg-emerald-400 transition-colors">
+                            LÄGG I VARUKORG
+                        </button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Search functionality
+        document.getElementById('search').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = products.filter(p => p.name.toLowerCase().includes(term));
+            renderProducts(filtered.length ? filtered : products);
+        });
+
+        // Initial render
+        renderProducts(products);
+    </script>
+</body>
+</html>
